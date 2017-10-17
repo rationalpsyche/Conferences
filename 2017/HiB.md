@@ -68,11 +68,53 @@ Last advice: always close channels
 
 Examples in `source/`
 
-# From APK to Golden Ticket
+## From APK to Golden Ticket
 
 See [detailed article](http://resources.infosecinstitute.com/apk-golden-ticket-owning-android-smartphone-gaining-domain-admin-rights/)
 
 Note: often virtual servers are cloned and the password is not changed!
 
+## Brida
 
+WebApp | Mobile App
+--- | ---
+Fixed client | Custom compiled
+Logic on backend | Logic split between backend and frontend
+Provisioned from the server | Provisioned from a trusted third party (i.e. play store)
 
+We can break down a mobile assessment into levels:
+
+* **Level 1:** no encryption
+
+	http traffic analysis
+* **Level 2:** TLS involved
+
+	MITM with Burpsuite, install Burp CA
+* **Level 3:** Certificate Pinning
+
+	Use FRIDA
+* **Level 4:** POST body encrypted
+
+	Find hard-coded AES key
+* **Level 5:** The key is not fixed
+
+	The scheme is the following:
+
+	* CT = AES(PT, random_key)
+	* send(CT, RSA_enc(random_key))
+	* The client holds the public RSA key.
+
+	Hooking on the key: keep it fixed
+
+* **Level 6:** the server checks the keys to be different
+
+## Cuckoo sandbox
+
+Do spend time setting a proper VM for malware analysis.
+
+Stupid checks a malware performs to detect VM:
+* 10 GB hard disk?
+* Default settings? (e.g. screensaver)
+* No saved passwords in browser?
+
+**Remark.** the analysis environment is NOT trusted: malware could target the hypervisor
