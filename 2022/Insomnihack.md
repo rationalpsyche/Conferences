@@ -41,7 +41,7 @@ Steps:
 - Coming up: Atomic Azure Tests -> inspired by [Atomic Red Team](https://github.com/redcanaryco/atomic-red-team/)
 
 ## Automatically extracting static anti-virus signatures
-**Speaker.** Vladimir Meier ``@plowsec`
+**Speaker.** Vladimir Meier `@plowsec`
 
 The AV performs multiple steps:
 - check the hash
